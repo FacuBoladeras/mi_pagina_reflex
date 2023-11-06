@@ -1,0 +1,1 @@
+export default {"styles": {"global": {"body": {"backgroundColor": "#0C151D", "fontFamily": "Popins-Light"}}}}
