@@ -1,10 +1,10 @@
-import { Fragment, useContext, useEffect, useRef, useState } from "react"
-import { useRouter } from "next/router"
-import { Event, getAllLocalStorageItems, getRefValue, getRefValues, isTrue, preventDefault, refs, spreadArraysOrObjects, uploadFiles, useEventLoop } from "/utils/state"
-import { ColorModeContext, EventLoopContext, initialEvents, StateContext } from "/utils/context.js"
+/** @jsxImportSource @emotion/react */
+
+
+import { Fragment } from "react"
+import { Fragment_fd0e7cb8f9fb4669a6805377d925fba0 } from "/utils/stateful_components"
+import { Avatar, Box, Button, Center, Flex, Heading, HStack, Image as ChakraImage, Link, Spacer, Text, VStack } from "@chakra-ui/react"
 import "focus-visible/dist/focus-visible"
-import { Avatar, Box, Button, Center, Flex, Heading, HStack, Image, Link, Modal, ModalBody, ModalContent, ModalHeader, ModalOverlay, Spacer, Text, VStack } from "@chakra-ui/react"
-import { getEventURL } from "/utils/state.js"
 import NextLink from "next/link"
 import { LinkIcon } from "@chakra-ui/icons"
 import NextHead from "next/head"
@@ -12,58 +12,10 @@ import NextHead from "next/head"
 
 
 export default function Component() {
-  const state = useContext(StateContext)
-  const router = useRouter()
-  const [ colorMode, toggleColorMode ] = useContext(ColorModeContext)
-  const focusRef = useRef();
-  
-  // Main event loop.
-  const [addEvents, connectError] = useContext(EventLoopContext)
-
-  // Set focus to the specified element.
-  useEffect(() => {
-    if (focusRef.current) {
-      focusRef.current.focus();
-    }
-  })
-
-  // Route after the initial page hydration.
-  useEffect(() => {
-    const change_complete = () => addEvents(initialEvents())
-    router.events.on('routeChangeComplete', change_complete)
-    return () => {
-      router.events.off('routeChangeComplete', change_complete)
-    }
-  }, [router])
-
 
   return (
     <Fragment>
-  <Fragment>
-  {isTrue(connectError !== null) ? (
-  <Fragment>
-  <Modal isOpen={connectError !== null}>
-  <ModalOverlay>
-  <ModalContent>
-  <ModalHeader>
-  {`Connection Error`}
-</ModalHeader>
-  <ModalBody>
-  <Text>
-  {`Cannot connect to server: `}
-  {(connectError !== null) ? connectError.message : ''}
-  {`. Check if server is reachable at `}
-  {getEventURL().href}
-</Text>
-</ModalBody>
-</ModalContent>
-</ModalOverlay>
-</Modal>
-</Fragment>
-) : (
-  <Fragment/>
-)}
-</Fragment>
+  <Fragment_fd0e7cb8f9fb4669a6805377d925fba0/>
   <Box>
   <HStack sx={{"position": "sticky", "bg": "#171F26", "paddingX": "2em", "paddingY": "1em", "zIndex": "999", "top": "0"}}>
   <Box sx={{"fontFamily": "Comfortaa-Medium", "fontSize": "2em"}}>
@@ -120,7 +72,7 @@ export default function Component() {
   <Link as={NextLink} href={`https://www.linkedin.com/in/facundo-boladeras-382043292/`} isExternal={true} sx={{"width": "100%", "textDecoration": "none", "_hover": {}}}>
   <Button sx={{"width": "100%", "height": "100%", "display": "block", "padding": "0.5em", "borderRadius": "1em", "color": "#F1F2F4", "backgroundColor": "#171F26", "_hover": {"backgroundColor": "#087ec4"}}}>
   <HStack>
-  <Image src={`linkedin.svg`} sx={{"width": "2em", "height": "2em", "margin": "0.8em"}}/>
+  <ChakraImage src={`linkedin.svg`} sx={{"width": "2em", "height": "2em", "margin": "0.8em"}}/>
   <VStack alignItems={`start`} spacing={`0.5em`} sx={{"paddingY": "0.5em"}}>
   <Text sx={{"fontFamily": "Popins-Bold", "fontSize": "1em", "color": "#F1F2F4"}}>
   {`Linkedin`}
@@ -135,7 +87,7 @@ export default function Component() {
   <Link as={NextLink} href={`https://github.com/FacuBoladeras`} isExternal={true} sx={{"width": "100%", "textDecoration": "none", "_hover": {}}}>
   <Button sx={{"width": "100%", "height": "100%", "display": "block", "padding": "0.5em", "borderRadius": "1em", "color": "#F1F2F4", "backgroundColor": "#171F26", "_hover": {"backgroundColor": "#087ec4"}}}>
   <HStack>
-  <Image src={`github.svg`} sx={{"width": "2em", "height": "2em", "margin": "0.8em"}}/>
+  <ChakraImage src={`github.svg`} sx={{"width": "2em", "height": "2em", "margin": "0.8em"}}/>
   <VStack alignItems={`start`} spacing={`0.5em`} sx={{"paddingY": "0.5em"}}>
   <Text sx={{"fontFamily": "Popins-Bold", "fontSize": "1em", "color": "#F1F2F4"}}>
   {`Github`}
@@ -150,7 +102,7 @@ export default function Component() {
   <Link as={NextLink} href={`https://www.upwork.com/nx/find-work/best-matches`} isExternal={true} sx={{"width": "100%", "textDecoration": "none", "_hover": {}}}>
   <Button sx={{"width": "100%", "height": "100%", "display": "block", "padding": "0.5em", "borderRadius": "1em", "color": "#F1F2F4", "backgroundColor": "#171F26", "_hover": {"backgroundColor": "#087ec4"}}}>
   <HStack>
-  <Image src={`email.svg`} sx={{"width": "2em", "height": "2em", "margin": "0.8em"}}/>
+  <ChakraImage src={`email.svg`} sx={{"width": "2em", "height": "2em", "margin": "0.8em"}}/>
   <VStack alignItems={`start`} spacing={`0.5em`} sx={{"paddingY": "0.5em"}}>
   <Text sx={{"fontFamily": "Popins-Bold", "fontSize": "1em", "color": "#F1F2F4"}}>
   {`Gmail`}
@@ -175,13 +127,13 @@ export default function Component() {
   <Text>
   {`Analisis GIS`}
 </Text>
-  <Image src={`satelite.png`} sx={{"height": "8em"}}/>
+  <ChakraImage src={`satelite.png`} sx={{"height": "8em"}}/>
 </VStack>
   <VStack sx={{"margin": "2em"}}>
   <Text>
   {`Programacion python`}
 </Text>
-  <Image src={`python.png`} sx={{"height": "8em"}}/>
+  <ChakraImage src={`python.png`} sx={{"height": "8em"}}/>
 </VStack>
 </VStack>
   <VStack>
@@ -189,13 +141,13 @@ export default function Component() {
   <Text>
   {`Data science`}
 </Text>
-  <Image src={`ciencia_datos.png`} sx={{"height": "8em"}}/>
+  <ChakraImage src={`ciencia_datos.png`} sx={{"height": "8em"}}/>
 </VStack>
   <VStack sx={{"margin": "2em"}}>
   <Text>
   {`Biologia de la conservacion`}
 </Text>
-  <Image src={`ambiente.png`} sx={{"height": "8em"}}/>
+  <ChakraImage src={`ambiente.png`} sx={{"height": "8em"}}/>
 </VStack>
 </VStack>
 </HStack>

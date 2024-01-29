@@ -7,7 +7,7 @@ import Reflex.estilos.styles as styles
 from Reflex.estilos.styles import Size as Size
 
 class State(rx.State):
-    pass
+    "probando"
 
 
 def index() -> rx.Component:
